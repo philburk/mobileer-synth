@@ -61,6 +61,12 @@
             ReferencedContainer = "container:MobSynth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "/Users/phil/nomad/MIDISynth/data/ringtones/phil/songs/Bach_PartitaDMinor.mid"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

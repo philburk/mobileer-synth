@@ -16,38 +16,38 @@
 #include "spmidi/include/streamio.h"
 #include "spmidi/include/read_wav.h"
 
-/** Read 16 bit signed integer assuming Little Endian byte order. */
-unsigned long ParseLongLE( unsigned char **addrPtr )
+/** Read 32 bit unsigned integer assuming Little Endian byte order. */
+spmUInt32 ParseLongLE( spmUInt8 **addrPtr )
 {
-    unsigned char *addr = *addrPtr;
+    spmUInt8 *addr = *addrPtr;
     int n = *addr++;
     n += (((int) *addr++) << 8);
     n += (((int) *addr++) << 16);
     n += (((int) *addr++) << 24);
     *addrPtr = addr;
-    return (unsigned long) n;
+    return (spmUInt32) n;
 }
 
-/** Read 16 bit signed integer assuming Big Endian byte order. */
-unsigned long ParseLongBE( unsigned char **addrPtr )
+/** Read 32 bit unsigned integer assuming Big Endian byte order. */
+spmUInt32 ParseLongBE( spmUInt8 **addrPtr )
 {
-    unsigned char *addr = *addrPtr;
+    spmUInt8 *addr = *addrPtr;
     int n = (((int) *addr++) << 24);
     n += (((int) *addr++) << 16);
     n += (((int) *addr++) << 8);
     n += *addr++;
     *addrPtr = addr;
-    return (unsigned long) n;
+    return (spmUInt32) n;
 }
 
-/** Read 16 bit signed integer assuming Little Endian byte order. */
-unsigned short ParseShortLE( unsigned char **addrPtr )
+/** Read 16 bit unsigned integer assuming Little Endian byte order. */
+spmUInt16 ParseShortLE( spmUInt8 **addrPtr )
 {
-    unsigned char *addr = *addrPtr;
+    spmUInt8 *addr = *addrPtr;
     int n = *addr++;
     n += (((int) *addr++) << 8);
     *addrPtr = addr;
-    return (unsigned short) n;
+    return (spmUInt16) n;
 }
 
 /* Parse a StreamIO of a WAV file and return information in an AudioSample structure.
@@ -59,15 +59,15 @@ long Audio_WAV_ParseSampleStream(
     AudioSample *asmp         /* Pre-allocated but empty structure to be completely filled in by parser. */
     )
 {
-    unsigned long chunkType;
-    long chunkSize;
-    unsigned long extendedSize;
-    unsigned long formType;
-    unsigned long bytesLeft;
+    spmUInt32     chunkType;
+    spmSInt32     chunkSize;
+    spmUInt32     extendedSize;
+    spmUInt32     formType;
+    spmUInt32     bytesLeft;
     int           format;
     int           result;
-    long          numFactSamples = -1;
-    unsigned long nextPos;
+    spmSInt32     numFactSamples = -1;
+    spmUInt32 nextPos;
     int           numRead;
     unsigned char *addr;
 #define PAD_SIZE  (128)

@@ -123,13 +123,13 @@ static spmUInt32 sRandomState; /* Initialized to INITIAL_RANDOM_SEED by Osc_Init
 #define SINE_INTERP_ORIGINAL \
     { \
         /* Convert phase to integer index into sine table. */ \
-        int index = ((unsigned long) phase) >> (32 - TABLE_NUM_ENTRIES_LOG2); \
-        const short *lowSinePtr = &sSineTable[ index ]; \
+        int index = ((spmUInt32) phase) >> (32 - TABLE_NUM_ENTRIES_LOG2); \
+        const spmSInt16 *lowSinePtr = &sSineTable[ index ]; \
         FXP31 lowSine = *lowSinePtr++; \
         FXP31 highSine = *lowSinePtr; \
         /* Convert phase to fraction between entries in sine table. */ \
-        unsigned long tableFraction = (((unsigned long) phase) << TABLE_NUM_ENTRIES_LOG2) >> TABLE_NUM_ENTRIES_LOG2; \
-        long tableDelta = (highSine - lowSine); \
+        spmUInt32 tableFraction = (((spmUInt32) phase) << TABLE_NUM_ENTRIES_LOG2) >> TABLE_NUM_ENTRIES_LOG2; \
+        spmSInt32 tableDelta = (highSine - lowSine); \
         tableFraction = tableFraction >> (16 - TABLE_NUM_ENTRIES_LOG2); \
         oscOutput = (lowSine << 16)  + (tableFraction * tableDelta); \
     }
@@ -137,13 +137,13 @@ static spmUInt32 sRandomState; /* Initialized to INITIAL_RANDOM_SEED by Osc_Init
 #define SINE_INTERP \
     { \
         /* Convert phase to integer index into sine table. */ \
-        int index = ((unsigned long) phase) >> (32 - TABLE_NUM_ENTRIES_LOG2); \
-        const short *lowSinePtr = &sSineTable[ index ]; \
+        int index = ((spmUInt32) phase) >> (32 - TABLE_NUM_ENTRIES_LOG2); \
+        const spmSInt16 *lowSinePtr = &sSineTable[ index ]; \
         FXP31 lowSine = *lowSinePtr++; \
         FXP31 highSine = *lowSinePtr; \
         /* Convert phase to fraction between entries in sine table. */ \
-        unsigned long tableFraction = (((unsigned long) phase) << TABLE_NUM_ENTRIES_LOG2) >> 16; \
-        long tableDelta = (highSine - lowSine); \
+        spmUInt32 tableFraction = (((spmUInt32) phase) << TABLE_NUM_ENTRIES_LOG2) >> 16; \
+        spmSInt32 tableDelta = (highSine - lowSine); \
         oscOutput = (lowSine << 16)  + (tableFraction * tableDelta); \
     }
 
@@ -156,9 +156,9 @@ void Osc_Next_Sine( Oscillator_t *osc, FXP31 amplitude, FXP31 *output, FXP31 *mo
 
 void Osc_Next_SinePM( Oscillator_t *osc, FXP31 amplitude, FXP31 *output, FXP31 *modulator )
 {
-OSC_PREAMBLE_MOD;
-SINE_INTERP
-OSC_POSTAMBLE_INC
+    OSC_PREAMBLE_MOD;
+    SINE_INTERP
+    OSC_POSTAMBLE_INC
 }
 
 /********************************************************************/
@@ -301,7 +301,7 @@ void OSC_Next_RedNoise( Oscillator_t *osc, FXP31 amplitude, FXP31 *output, FXP31
         next = (FXP31) NEXT_RANDOM;
         osc->shared.interp.delta = (next >> 17) - (osc->shared.interp.previous >> 17);
     }
-    oscOutput = osc->shared.interp.previous + ((((unsigned long)nextPhase) >> 16) * osc->shared.interp.delta);
+    oscOutput = osc->shared.interp.previous + ((((spmUInt32)nextPhase) >> 16) * osc->shared.interp.delta);
 
     oscPhase = nextPhase;
     OSC_POSTAMBLE
@@ -318,7 +318,7 @@ void OSC_Next_Particle( Oscillator_t *osc, FXP31 amplitude, FXP31 *output, FXP31
     FXP31 oscPhaseInc = osc->phaseInc;
     for ( is = 0; is < SS_FRAMES_PER_BLOCK; is++ )
     {
-        oscOutput = (NEXT_RANDOM < (unsigned long) oscPhaseInc) ?
+        oscOutput = (NEXT_RANDOM < (spmUInt32) oscPhaseInc) ?
                     (FXP31) NEXT_RANDOM : 0;
 
         output[is] = FXP31_MULT( oscOutput, amplitude );
