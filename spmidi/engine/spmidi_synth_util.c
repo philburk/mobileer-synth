@@ -386,22 +386,22 @@ FXP31 SS_MixerSoftClip( FXP31 input )
 #endif
 
 /** Parse 32 bit integer assuming Big Endian byte order. */
-unsigned char *SS_ParseLong( long *data, unsigned char *p)
+spmUInt8 *SS_ParseLong( spmSInt32 *data, spmUInt8 *p)
 {
-    unsigned long pad = ((unsigned long)(*p++)) << 24;
-    pad |= ((unsigned long)(*p++)) << 16;
-    pad |= ((unsigned long)(*p++)) << 8;
-    pad |= ((unsigned long)(*p++));
-    *data = (long) pad;
+    spmUInt32 pad = ((spmUInt32)(*p++)) << 24;
+    pad |= ((spmUInt32)(*p++)) << 16;
+    pad |= ((spmUInt32)(*p++)) << 8;
+    pad |= ((spmUInt32)(*p++));
+    *data = (spmSInt32) pad;
     return p;
 }
 
 /** Parse 16 bit integer assuming Big Endian byte order. */
-unsigned char *SS_ParseShort( short *data, unsigned char *p)
+spmUInt8 *SS_ParseShort( spmSInt16 *data, spmUInt8 *p)
 {
-    unsigned short pad = (unsigned short)(((int)(*p++)) << 8);
-    pad |= (unsigned short)(*p++);
-    *data = (short) pad;
+    spmUInt16 pad = (spmUInt16)(((int)(*p++)) << 8);
+    pad |= (spmUInt16)(*p++);
+    *data = (spmSInt16) pad;
     return p;
 }
 

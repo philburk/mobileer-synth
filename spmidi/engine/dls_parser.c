@@ -2158,7 +2158,7 @@ static int DLSParser_ResolveInstrument( DLS_Orchestra_t *orchestra, int insIndex
         DBUGMSG("Loading region ...\n");
         region = &(ins->regions[i]);
         if( ( region == NULL ) ||
-            ( region->tableIndex >= (unsigned long) orchestra->numPoolTableEntries ) )
+            ( region->tableIndex >= (spmUInt32) orchestra->numPoolTableEntries ) )
         {
             return DLSParser_Error_ParseError; /* 050616 */
         }

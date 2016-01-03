@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "spmidi/engine/fxpmath.h"
 #include "spmidi/include/spmidi.h"
 #include "spmidi/include/spmidi_load.h"
 #include "spmidi/include/spmidi_play.h"
@@ -217,7 +218,9 @@ int main( int argc, char ** argv )
     const char *s;
     PlayConfig_t CONFIG;
     PlayConfig_t *config = &CONFIG;
-
+    
+    printf("sizeof(int) = %d\n", sizeof(int));
+    printf("sizeof(FXP31) = %d\n", sizeof(FXP31));
     config->numLoops = 1;
     config->sampleRate = SAMPLE_RATE;
     config->maxVoices = SPMIDI_MAX_VOICES;

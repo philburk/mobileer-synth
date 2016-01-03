@@ -12,19 +12,21 @@
  * @author Phil Burk, Copyright 2002 Mobileer, PROPRIETARY and CONFIDENTIAL
  */
 
+#include <stdint.h>
+
 /* Define fixed-point data types. The number indicates the number of fractional bits. */
 /* FXP31 ranges from 0x80000000 to 0x7FFFFFFF */ 
-typedef long FXP31;
-typedef long FXP27;
+typedef int32_t FXP31;
+typedef int32_t FXP27;
 /* FXP24 ranges from 0xFF000000 to 0x00FFFFFF */ 
-typedef long FXP24;
-typedef long FXP16;
+typedef int32_t FXP24;
+typedef int32_t FXP16;
 /* FXP15 ranges from 0xFFFF8000 to 0x00007FFF */
 /* FXP15 is a common 16 bit signed value, eg. a WAV sample. */
-typedef long FXP15;
-typedef long FXP14;
-typedef long FXP8;
-typedef long FXP7;
+typedef int32_t FXP15;
+typedef int32_t FXP14;
+typedef int32_t FXP8;
+typedef int32_t FXP7;
 
 /* Allow DSP optimization to be overridden by compiler setting. */
 #ifndef SPMIDI_DSP_BLACKFIN

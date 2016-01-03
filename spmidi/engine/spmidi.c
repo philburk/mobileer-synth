@@ -783,8 +783,8 @@ static void SPMIDI_HandleNoteOff( SPMIDIContext_t *spmc, int channelIndex, int n
 static void SPMIDI_UpdateTuning( SPMIDIContext_t *spmc, int channelIndex )
 {
     FXP16 octaveOffset16;
-    long semitoneOffset16;
-    long fineOffset13, coarseOffset13;
+    spmSInt32 semitoneOffset16;
+    spmSInt32 fineOffset13, coarseOffset13;
     SPMIDIChannel_t *channel = &spmc->channels[ channelIndex ];
     if( channelIndex != MIDI_RHYTHM_CHANNEL_INDEX )
     {
@@ -811,9 +811,9 @@ static void SPMIDI_UpdateTuning( SPMIDIContext_t *spmc, int channelIndex )
  */
 static void SPMIDI_UpdatePitchBend( SPMIDIContext_t *spmc, int channelIndex )
 {
-    long semitoneOffset16;
+    spmSInt32 semitoneOffset16;
     SPMIDIChannel_t *channel = &spmc->channels[ channelIndex ];
-    semitoneOffset16 = ((long) channel->bendRange * (long) channel->bend) >> 5;
+    semitoneOffset16 = ((spmSInt32) channel->bendRange * (spmSInt32) channel->bend) >> 5;
     spmc->synth->SetChannelPitchBend( spmc->synth, channelIndex, semitoneOffset16 );
 }
 

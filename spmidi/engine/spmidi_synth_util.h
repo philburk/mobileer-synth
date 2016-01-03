@@ -76,10 +76,10 @@ extern "C"
     FXP31 SS_MixerSoftClip( FXP31 input );
 
     /** Parse 32 bit integer assuming Big Endian byte order. */
-    unsigned char *SS_ParseLong( long *data, unsigned char *p);
+    spmUInt8 *SS_ParseLong( spmSInt32 *data, spmUInt8 *p);
 
     /** Parse 16 bit integer assuming Big Endian byte order. */
-    unsigned char *SS_ParseShort( short *data, unsigned char *p);
+    spmUInt8 *SS_ParseShort( spmSInt16 *data, spmUInt8 *p);
 
 #ifdef __cplusplus
 }
