@@ -714,6 +714,7 @@ static void SPMIDI_CallVibrator( SPMIDIContext_t *spmc, int noteIndex, int veloc
  */
 static void SPMIDI_HandleNoteOn( SPMIDIContext_t *spmc, int channelIndex, int noteIndex, int velocity )
 {
+    printf("SPMIDI_HandleNoteON(%d) ========\n", noteIndex);
     if( velocity == 0 )
     {
         SPMIDI_HandleNoteOff( spmc, channelIndex, noteIndex, velocity );
@@ -743,13 +744,15 @@ static void SPMIDI_HandleNoteOn( SPMIDIContext_t *spmc, int channelIndex, int no
 
 /********************************************************************/
 /**
- * Handle NoteOn Commands
+ * Handle NoteOff Commands
  */
 static void SPMIDI_HandleNoteOff( SPMIDIContext_t *spmc, int channelIndex, int noteIndex, int velocity )
 {
     SPMIDIChannel_t *channel = &spmc->channels[channelIndex];
     SPMIDIVoiceTracker_t *voice = NULL;
     (void) velocity;
+
+    printf("SPMIDI_HandleNoteOFF(%d) =========\n", noteIndex);
 
     /* Just call app if this is a vibrating channel. */
     if( channel->isVibrating )
