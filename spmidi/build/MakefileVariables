@@ -1,0 +1,57 @@
+# Makefile Variable for Mobileer MIDI Engine
+# (C) 2006 Mobileer, Inc.
+
+EXPORTED_ORCHESTRA=../export
+
+ME2000_INCLUDEPATH = \
+	-I../include \
+	-I../engine \
+	-I$(EXPORTED_ORCHESTRA) \
+	-I../jukebox \
+	-I../util
+
+VPATH += ../engine ../examples ../jukebox ../tools ../util 
+
+ME2000_OBJS = \
+	 adsr_envelope.o \
+	 compressor.o \
+	 instrument_mgr.o \
+	 memheap.o \
+	 memtools.o \
+	 midi_names.o \
+	 midifile_parser.o \
+	 midifile_player.o \
+	 oscillator.o \
+	 resource_mgr.o \
+	 reverb.o \
+	 song_player.o \
+	 spmidi.o \
+	 spmidi_fast.o \
+	 spmidi_host.o \
+	 spmidi_hybrid.o \
+	 spmidi_orchestra.o \
+	 spmidi_synth_util.o \
+	 spmidi_util.o \
+	 stack.o \
+	 streamio.o \
+	 streamio_ram.o \
+	 svfilter.o \
+	 wave_manager.o \
+	 wavetable.o \
+	 
+ME3000_OBJS = \
+	 dbl_list.o \
+	 dls_articulations.o \
+	 dls_parser.o \
+	 parse_riff.o \
+	 spmidi_dls.o \
+	 xmf_parser.o
+
+JUKEBOX_OBJS = \
+	atomic_fifo.o \
+	event_buffer.o \
+	spmidi_jukebox.o
+	
+SPMIDI_OBJS = $(ME2000_OBJS) $(ME3000_OBJS) $(JUKEBOX_OBJS)
+
+	 
