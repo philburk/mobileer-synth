@@ -12,11 +12,11 @@
 /* This next comment builds the main page and is only used in this file. */
 
 /** @mainpage Scaleable Polyphonic MIDI Engine for Ringtones
- * 
+ *
  * @section Intro
  * The SPMIDI Engine is a product of
  * <a href="http://www.mobileer.com/" target="_blank">Mobileer</a>.
- * 
+ *
  * Most important API docs in <a href="spmidi_8h.html">"spmidi.h"</a>.
  *
 The SPMIDI Engine is a software based MIDI synthesizer which can be
@@ -25,44 +25,44 @@ to run on low-cost CPUs with a minimal footprint. The software may be licensed
 for use with Handspring products.
 
 <h3>Features</h3>
- 
+
 <ul>
 <li>
 Play polyphonic ringtones from Standard SP-MIDI files (Scaleable Polyphony)</li>
- 
+
 <li>
 Support General MIDI Lite as a minimum capability.</li>
- 
+
 <li>
 Support swapping between multiple synthesis engines.</li>
- 
+
 <li>
 Synthesize audio at a variety of sample rates from 8 to 48 KHz.</li>
- 
+
 <li>
 Software written in portable ANSI 'C'.</li>
- 
+
 <li>
 Use fixed point math for embedded CPUs.</li>
- 
+
 <li>
 Software design minimizes system dependencies and memory allocations for
 easy maintainance and tuning.</li>
- 
+
 <li>
 Edit proprietary instrument libraries graphically using a Java based application.</li>
- 
+
 <li>
 Read instrument libraries or songs from files or RAM resident images.</li>
 </ul>
- 
+
  *
  */
 
 #include <stdint.h>
 
-#include "spmidi/include/spmidi_config.h"
-#include "spmidi/include/spmidi_errors.h"
+#include "spmidi_config.h"
+#include "spmidi_errors.h"
 
 /**
  * Basic data types used by SPMIDI to ease portability.
@@ -144,7 +144,7 @@ typedef enum SPMIDI_Parameter_e
      */
     SPMIDI_PARAM_COMPRESSOR_TARGET,
     /**
-     * Determines percentage of maximum for threshold. 
+     * Determines percentage of maximum for threshold.
      * Signals with an amplitude below the threshold are not compressed.
      * This prevents low level noise from being amplified to extremely loud levels.
      * Suggested value is 2.
@@ -194,7 +194,7 @@ typedef enum SPMIDI_Parameter_e
 
     /**
      * Transpose the pitch of a NoteOn command by this many semitones.
-     * Drum triggers will not be affected. 
+     * Drum triggers will not be affected.
      * The NoteOffs will still match up with the correct NoteOn even if teh synthesizer
      * is transposed in the middle of a note.
      */
@@ -256,7 +256,6 @@ extern "C"
      */
     int SPMIDI_DeleteContext( SPMIDI_Context *spmidiContext );
 
-
     /**
      * Set maximum number of voices that can sound simultaneously.
      * @param maxNumVoices Maximum number of simultaneous voices.
@@ -306,8 +305,8 @@ extern "C"
     void SPMIDI_WriteCommand( SPMIDI_Context *spmidiContext, int command, int data1, int data2 );
 
     /**
-     * Synthesize audio data and place it in the *samples array. 
-     * 
+     * Synthesize audio data and place it in the *samples array.
+     *
      * @param samples Pointer to buffer to be filled with synthesized audio data.
      *      Data type determined by bytesPerSample parameter.
      * @param numFrames Number of frames to be generated and written to the samples buffer.
@@ -371,7 +370,7 @@ extern "C"
     void SPMIDI_ResetMaxNoteCount( SPMIDI_Context *spmidiContext );
 
     /**
-     * Return the number of notes currently sounding n a given channel.
+     * Return the number of notes currently sounding on a given channel.
      * A note will continue to sound for a short times after a NoteOff is received.
      */
     int SPMIDI_GetChannelActiveNoteCount( SPMIDI_Context *spmidiContext, int channelIndex );
