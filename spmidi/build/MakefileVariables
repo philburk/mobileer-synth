@@ -1,16 +1,17 @@
 # Makefile Variable for Mobileer MIDI Engine
 # (C) 2006 Mobileer, Inc.
 
-EXPORTED_ORCHESTRA=../export
+EXPORTED_ORCHESTRA=../export_1mb
 
 ME2000_INCLUDEPATH = \
 	-I../include \
 	-I../engine \
 	-I$(EXPORTED_ORCHESTRA) \
 	-I../jukebox \
-	-I../util
+	-I../util \
+	-I../../
 
-VPATH += ../engine ../examples ../jukebox ../tools ../util 
+VPATH += ../engine ../examples ../jukebox ../tools ../util
 
 ME2000_OBJS = \
 	 adsr_envelope.o \

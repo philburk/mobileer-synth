@@ -27,6 +27,12 @@ AtomicFIFO;
  */
 int AFIFO_Init( AtomicFIFO *af, int numElements, int elementSize, void *dataPtr );
 
+/* Return number of elements available. */
+int AFIFO_GetAvailableToRead( AtomicFIFO *af );
+
+/* Return number of elements available. */
+int AFIFO_GetAvailableToWrite( AtomicFIFO *af );
+
 /* Return 1 if full, else return 0. */
 int AFIFO_IsFull( AtomicFIFO *af );
 
