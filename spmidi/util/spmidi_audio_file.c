@@ -1,7 +1,7 @@
 /* $Id: spmidi_audio_file.c,v 1.3 2007/10/02 16:24:50 philjmsl Exp $ */
 /**
  * Generic audio functions used by the Mobileer examples.
- * This implementation write the audio to a file.
+ * This implementation writes the audio to a file.
  *
  * Copyright 2002 Mobileer, Phil Burk, PROPRIETARY and CONFIDENTIAL
  */

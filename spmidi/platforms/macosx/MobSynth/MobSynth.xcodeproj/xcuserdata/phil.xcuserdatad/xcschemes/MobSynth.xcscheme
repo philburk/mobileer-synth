@@ -63,7 +63,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/phil/nomad/MIDISynth/data/ringtones/phil/songs/Bach_PartitaDMinor.mid"
+            argument = "/Users/phil/nomad/MIDISynth/data/ringtones/jeanne/KenshasaRing.mid"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -183,6 +183,8 @@ int main( int argc, char ** argv )
 error:
 	if( data != NULL )
 		SPMUtil_FreeFileImage( data );
+
+    printf("finished, result = %d\n", result );
 	return result;
 }
 

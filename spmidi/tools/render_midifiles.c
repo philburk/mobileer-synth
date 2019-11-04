@@ -218,9 +218,10 @@ int main( int argc, char ** argv )
     const char *s;
     PlayConfig_t CONFIG;
     PlayConfig_t *config = &CONFIG;
-    
-    printf("sizeof(int) = %d\n", sizeof(int));
-    printf("sizeof(FXP31) = %d\n", sizeof(FXP31));
+
+    printf("sizeof(int) = %d\n", (int)sizeof(int));
+    printf("sizeof(long) = %d\n", (int)sizeof(long));
+    printf("sizeof(FXP31) = %d\n", (int)sizeof(FXP31));
     config->numLoops = 1;
     config->sampleRate = SAMPLE_RATE;
     config->maxVoices = SPMIDI_MAX_VOICES;

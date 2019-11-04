@@ -7,6 +7,8 @@
  *
  */
 
+#include <math.h>
+
 #include "spmidi/engine/fxpmath.h"
 #include "spmidi/include/spmidi.h"
 #include "spmidi/engine/spmidi_synth_util.h"
@@ -98,9 +100,9 @@ void OnePoleFilter_SetPitch( OnePoleFilter_t *filter, FXP16 octavePitch )
 //      filter->a0 = (FXP27) (1<<27);
         filter->a0 = (FXP27) (pow( 10.0, filter->info->resonance / (-40 << 27) ) * (1<<27));
 
-        printf("a0 = 0x%\n", filter->a0 );
-        printf("b1 = %g\n", filter->b1 );
-        printf("b2 = %g\n", filter->b2 );
+        printf("a0 = 0x%x\n", filter->a0 );
+        printf("b1 = 0x%x\n", filter->b1 );
+        printf("b2 = 0x%x\n", filter->b2 );
     }
 #endif
 

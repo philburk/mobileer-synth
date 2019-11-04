@@ -17,7 +17,7 @@
 #include "spmidi/include/read_wav.h"
 
 /** Read 32 bit unsigned integer assuming Little Endian byte order. */
-spmUInt32 ParseLongLE( spmUInt8 **addrPtr )
+unsigned long ParseLongLE( spmUInt8 **addrPtr )
 {
     spmUInt8 *addr = *addrPtr;
     int n = *addr++;

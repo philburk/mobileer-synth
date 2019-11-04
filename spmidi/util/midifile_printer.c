@@ -38,7 +38,7 @@ void DumpSafeString( const unsigned char *addr, int numBytes )
 }
 
 /****************************************************************/
-void DumpMemory( const unsigned char *addr, int numBytes )
+static void DumpMemory( const unsigned char *addr, int numBytes )
 {
     int i;
     while( numBytes > 0 )

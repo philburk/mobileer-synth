@@ -112,7 +112,7 @@ static int MEHost_Term(void)
 /* Stub out memory allocation routines. */
 static void *MEHost_AllocateMemory(int numBytes)
 {
-    return ((void *)(numBytes - numBytes));
+    return NULL;
 }
 static void MEHost_FreeMemory( void *ptr)
 {
