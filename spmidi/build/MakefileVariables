@@ -16,6 +16,7 @@ VPATH += ../engine ../examples ../jukebox ../tools ../util
 ME2000_OBJS = \
 	 adsr_envelope.o \
 	 compressor.o \
+	 dbl_list.o \
 	 instrument_mgr.o \
 	 memheap.o \
 	 memtools.o \
@@ -40,9 +41,7 @@ ME2000_OBJS = \
 	 wave_manager.o \
 	 wavetable.o \
 	 
-ME3000_OBJS = \
-	 dbl_list.o \
-	 dls_articulations.o \
+ME3000_OBJS = \	 dls_articulations.o \
 	 dls_parser.o \
 	 parse_riff.o \
 	 spmidi_dls.o \

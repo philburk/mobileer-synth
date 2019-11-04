@@ -1279,7 +1279,7 @@ static char * GetWaveAddressIfOK( DLS_Wave_t *dlsWave, StreamIO *sio )
         {
             /* 8 bit data is OK. */
             /* 16 bit data has more restrictions. */
-            if( (dlsWave->bytesPerSample == 2) )
+            if( dlsWave->bytesPerSample == 2 )
             {
                 /* If we are doing 16 bit data then address must be even
                  * and CPU must be LittleEndian */

@@ -6,8 +6,9 @@ include ../build/MakefileVariables
 
 CFLAGS = \
 	-DSPMIDI_USE_PRINTF \
-	-DSPMIDI_ME3000=1 \
+	-DSPMIDI_ME3000=0 \
 	-Wall \
+        -g \
 	$(ME2000_INCLUDEPATH) \
 	-I../examples \
 	-I../qa
@@ -36,9 +37,9 @@ $(DEMO_ME2000_EXE): $(DEMO_OBJS) $(SPMIDI_OBJS)
 
 $(DEMO_ME3000_EXE): $(DEMO_OBJS) $(SPMIDI_OBJS)
 
-libme2000.a:  $(DEMO_OBJS) $(SPMIDI_OBJS)
+libme2000.a:  $(ME2000_OBJS) $(JUKEBOX_OBJS)
 	@echo 'Building target: $@'
-	ar -r "libme2000.a" $(DEMO_OBJS) $(SPMIDI_OBJS)
+	ar -r "libme2000.a" $(ME2000_OBJS) $(JUKEBOX_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -113,7 +113,7 @@ SPMIDI_Error SongPlayer_Create( SongPlayer **playerPtr, SPMIDI_Context *spmidiCo
     int rate;
 
     /* Check parms for sanity */
-    if( &playerPtr == NULL || spmidiContext == NULL || songImage == NULL || numBytes <= 0 )
+    if( playerPtr == NULL || spmidiContext == NULL || songImage == NULL || numBytes <= 0 )
         return SPMIDI_Error_IllegalArgument;
 
     /* Allocate context structure */

@@ -25,11 +25,11 @@
 #include "spmidi_jukebox_playlist.h"
 
 #ifndef JUKEBOX_FIFO_SIZE
-#define JUKEBOX_FIFO_SIZE   (256)
+#define JUKEBOX_FIFO_SIZE   (512)
 #endif
 
 #ifndef JUKEBOX_EVBUF_SIZE
-#define JUKEBOX_EVBUF_SIZE  (512)
+#define JUKEBOX_EVBUF_SIZE  (8 * 1024)
 #endif
 
 #ifndef JUKEBOX_SONGQUEUE_SIZE
@@ -353,7 +353,7 @@ SPMIDI_Error  JukeBox_SendMIDI3( int time, int cmd, int d1, int d2 )
 SPMIDI_Error  JukeBox_ClearCommands( void )
 {
 	/* Terminate and re-initialize event buffer */
-	if( &JBCon.eventBuffer )
+	if( JBCon.eventBuffer.ebuf_UserContext )
 	{
 		EB_Term( &JBCon.eventBuffer );
 		return EB_Init( &JBCon.eventBuffer, 0, &JBCon );
@@ -513,13 +513,14 @@ static SPMIDI_Error JB_ProcessCommands( void )
 		switch( command->opcode )
 		{
 		case CMD_MIDI:
-			/* Grab MIDI bytes from command and put into the event buffer. */
+            /* Allocate free event. */
 			event = (JukeBoxEvent_t *) DLL_RemoveFirst( &JBCon.freeEventList );
 			if( event == NULL )
 			{
 				result = -2;
 				goto error;
 			}
+            /* Grab MIDI bytes from command and put into the event buffer. */
 			event->opcode = command->opcode;
 			*((int *)&event->bytes[0]) = *((int *)&command->bytes[0]);
 			EB_ScheduleNode( &JBCon.eventBuffer,
