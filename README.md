@@ -61,6 +61,9 @@ You can convert any standard MIDI file to WAV using "play_midifile".
 We have included some ringtones that you can use for testing.
 
     bin/play_midifile ../../data/ringtones/phil/songs/FurryLisa_rt.mid
+    aplay spmidi_output.wav
+    bin/play_midifile ../../data/ringtones/phil/songs/Bach_Sonata3EMajor.mid
+    aplay spmidi_output.wav
     
 # Contributors
 
