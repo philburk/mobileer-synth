@@ -2,9 +2,9 @@
 
 General MIDI Synthesizer in portable C by Mobileer.
 
-This synthesizer was used in the Palm Treo and other mobile devices for playing ringtones.
+This synthesizer was licensed for use in the Palm Treo and other mobile devices for playing ringtones.
 
-The library is given MIDI bytes and input and produces 16-bit PCM audio as output.
+The library is given MIDI bytes as input and produces 16-bit PCM audio as output.
 It can be easily connected to any audio system.
 Optional output modules can be used to play in real-time using PortAudio or to output a WAV file.
 
