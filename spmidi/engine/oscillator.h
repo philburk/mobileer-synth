@@ -60,8 +60,8 @@ extern "C"
 
     typedef short SPMIDI_SAMPLE; /* TODO - replace every occurence with spmSample in editor */
 
-
-    typedef void (SS_OscillatorNextProc)( void *osc, FXP31 amplitude, FXP31 *output,
+    typedef struct Oscillator_s Oscillator_t; /* Forward reference. */
+    typedef void (SS_OscillatorNextProc)( Oscillator_t *osc, FXP31 amplitude, FXP31 *output,
                                           FXP31 *modulator );
 
     typedef struct Oscillator_s

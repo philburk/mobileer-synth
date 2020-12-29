@@ -224,15 +224,13 @@ typedef struct ChannelStatus_s
 } ChannelStatus_t;
 
 /****************************************************************/
-static int ProgramScanner_HandleEvent( MIDIFileParser_t *parser, int ticks, int command, int data1, int data2 )
+static int ProgramScanner_HandleEvent( MIDIFileParser_t *parser, int ticks,
+        int command, int data1, int data2 )
 {
-    int numBytes;
+    (void) ticks;
     int messageType = command & 0x00F0;
     ChannelStatus_t *channelStatus = (ChannelStatus_t *) parser->userData;
     int channel = command & 0x0F;
-    (void) ticks;
-
-    numBytes = SPMIDI_GetBytesPerMessage( command );
 
     switch( messageType )
     {
