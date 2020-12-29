@@ -15,8 +15,8 @@
 #include "spmidi/include/spmidi_play.h"
 #include "spmidi/include/spmidi_load.h"
 #include "spmidi/include/midifile_player.h"
-#include "spmidi/examples/midifile_names.h"
 
+#define DEFAULT_FILENAME    "../../data/ringtones/phil/songs/FurryLisa_rt.mid"
 #define SAMPLE_RATE         (44100)
 #define SAMPLES_PER_FRAME   (2)
 
@@ -74,7 +74,7 @@ int MIDIFile_Play( unsigned char *image, int numBytes, const char *fileName )
 	 * Initialize SPMIDI Synthesizer.
 	 * Output to audio or a file.
 	 */
-	
+
 	/* Start synthesis engine with default number of voices. */
 	result = SPMIDI_CreateContext( &spmidiContext, SAMPLE_RATE );
 	if( result < 0 )
@@ -94,7 +94,7 @@ int MIDIFile_Play( unsigned char *image, int numBytes, const char *fileName )
 	 */
 	while( go )
 	{
-	
+
 		int mfperr = MIDIFilePlayer_PlayFrames( player, spmidiContext, SPMIDI_GetFramesPerBuffer()  );
 		if( mfperr < 0 )
 		{
