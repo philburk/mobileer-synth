@@ -13,6 +13,8 @@ The library has 3 levels:
 * ME2000 - adds wavetables for piano, violin, drums and other instruments that are difficult to synthesize
 * ME3000 - adds support for DLS and Scalable Polyphonic MIDI ringtone standards
 
+# Documentation in [docs](docs) folder
+
 # Dependencies and Requirements
 
 The synthesizer uses 32-bit fixed-point arithmetic for its signal processing. It does not use floating point. 
