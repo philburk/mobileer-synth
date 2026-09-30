@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.4)
+cmake_minimum_required(VERSION 3.5)
 
 project(spmidi)
 
@@ -62,6 +62,9 @@ set (me2000_sources
     engine/svfilter.c
     engine/wave_manager.c
     engine/wavetable.c
+    jukebox/atomic_fifo.c
+    jukebox/event_buffer.c
+    jukebox/spmidi_jukebox.c
     )
 
 add_library(me2000 ${me2000_sources})
